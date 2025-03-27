@@ -1,2 +1,4 @@
 .project.env/*
 !.project.env/*.template
+
+**/__pycache__/*

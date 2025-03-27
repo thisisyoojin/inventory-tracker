@@ -12,7 +12,10 @@ services:
     image: postgres:17
     env_file:
       - .project.env/postgres.env
-    depends_on:
-      - web
     ports:
       - 5440:5432
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+
+volumes:
+  postgres-data:

@@ -10,4 +10,4 @@ EXPOSE 8000
 
 COPY tracker ./tracker
 
-ENTRYPOINT [ "poetry", "run", "python", "./tracker/manage.py", "runserver", "0.0.0.0:8000" ]
+ENTRYPOINT [ "poetry", "run", "python", "./tracker/manage.py", "runserver", "127.0.0.1:8000" ]
