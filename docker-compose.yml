@@ -1,0 +1,18 @@
+services:
+  web:
+    build: .
+    env_file:
+      - .project.env/.env
+    ports:
+      - 8000:8000
+    volumes:
+      - ./tracker:/app/tracker
+
+  postgres:
+    image: postgres:17
+    env_file:
+      - .project.env/postgres.env
+    depends_on:
+      - web
+    ports:
+      - 5440:5432
