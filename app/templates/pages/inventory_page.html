@@ -1,0 +1,22 @@
+<div id="dashboard">
+    <input
+        name="q_name"
+        class="searchInput"
+        hx-get="/ajax/inventory_items"
+        hx-trigger="input changed delay:1s"
+        {% if restaurant %}
+        hx-vals='{"r": "{{ restaurant }}"}'
+        {% endif %}
+        hx-target="#inventoryPage"
+        />
+    <div
+        id="inventoryPage"
+        hx-get="/ajax/inventory_items"
+        hx-trigger="load"
+        {% if restaurant %}
+        hx-vals='{"r": "{{ restaurant }}"}'
+        {% endif %}
+        hx-target="#inventoryPage"
+    >
+    </div>
+</div>
