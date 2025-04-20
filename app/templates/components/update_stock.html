@@ -1,0 +1,26 @@
+<form name="myForm" hx-post="{% url 'update_stock' %}" hx-target="#content-div" >
+    {% csrf_token %}    
+    <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    </div>
+
+    <div class="modal-body">      
+        <input type="hidden" name="item_id" value="{{item.id}}">
+        
+        <div class="flex flex-row p-2">
+        <label for="item_name">Name</label>
+        <input name="item_name" type="text" value="{{item.name}}" disabled>
+        </div>
+    
+        <div class="flex flex-row p-2">
+        <label for="stock"><span>*</span> Stock</label>
+        <input name="stock" type="number" placeholder="{{stock}}" required>
+        </div>
+    </div>
+
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Save changes</button>
+    </div>
+</form>

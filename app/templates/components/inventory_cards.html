@@ -1,0 +1,34 @@
+<!-- Inventory Cards (Start)-->
+{% for obj in object_list %}
+<section class="inventoryCard">
+    <section>
+    <span>{{ obj.item.name }}</span>
+    <span class="inventoryStock">{{ obj.stock }}</span>
+    </section>
+    <button
+        type="button"
+        class="btn btn-primary onclick-disable"
+        data-bs-toggle="modal"
+        data-bs-target="#staticBackdrop"
+        hx-get="{% url 'update_stock' %}"
+        hx-vals='{"item_id": "{{obj.item.id}}", "stock": "{{obj.stock}}"}'
+        hx-target="#modal-content"
+    >update</button>
+</section>    
+{% empty %}
+<section>No item</section>
+{% endfor %}
+
+<!-- Modal to update stock (Start) -->
+<div 
+    id="staticBackdrop"
+    class="modal fade" 
+    data-bs-backdrop="static"
+    tabindex="-1" 
+    aria-hidden="true"
+>
+    <div class="modal-dialog">
+        <div id="modal-content" class="modal-content"></div>
+    </div>
+</div>
+<!-- Modal to update stock (End) -->
